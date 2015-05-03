@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" ng-app= "store">
+<html lang="es" ng-app="demoapp">
 	<head>
 		<meta charset="UTF-8">
 		<title> Usuario</title>
@@ -9,19 +9,18 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<script src="js/angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		
-		<div id="logo" class="header"></div>	
-		<div id="menu-usuario"></div>
-		{{2+3}}
-		<div id="capa" ng-controller="ControladorRankingCamaras as controlador"></div>
-		<div id = "piepagina" class="footer"></div>
-		
+		<!--<script src="js/angular.min.js"></script>-->
+		<div ng-controller="MainCtrl">
+			<div id="logo" class="header"></div>	
+			<div id="menu-usuario"></div>
+			<ng-view></ng-view>
+			<!--<div id="capa" ng-controller="ControladorRankingCamaras as controlador"></div>-->
+			<div id = "piepagina" class="footer"></div>
+		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
-        
-		<script src="js/angular-ui-router.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+		<script src="js/demo-app.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script type="text/javascript">
