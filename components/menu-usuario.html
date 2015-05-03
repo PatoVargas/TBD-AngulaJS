@@ -1,0 +1,69 @@
+<script type="text/javascript">
+	$(function() {
+		$("#cameraroll").click(function(event) {
+		$("#capa").load("cameraroll.html");
+		});
+		$("#photostream").click(function(event) {
+		$("#capa").load("photostream.html");
+		});
+		$("#album").click(function(event) {
+		$("#capa").load("album.html");
+		});
+		$("#mapa").click(function(event) {
+		$("#capa").load("mapa.html");
+		});
+		$("#favoritos").click(function(event) {
+		$("#capa").load("favoritos.html");
+		});
+		$("#actividad-reciente").click(function(event) {
+		$("#capa").load("actividad-reciente.html");
+		});
+		$("#fotos-desde").click(function(event) {
+		$("#capa").load("fotos-desde.html");
+		});
+		$("#fotos-de").click(function(event) {
+		$("#capa").load("fotos-de.html");
+		});
+		$("#fotos-recientes").click(function(event) {
+		$("#capa").load("fotos-recientes.html");
+		});
+		$("#mapa-mundial").click(function(event) {
+		$("#capa").load("mapa-mundial.html");
+		});
+		$("#buscador-camaras").click(function(event) {
+		$("#capa").load("buscador-camaras.html");
+		});
+	});
+</script>
+
+<ul class="nav nav-pills nav-justified">
+	<li class=" dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a id="cameraroll" href="#">Camera Roll</a></li>
+			<li><a id="photostream" href="#">Photostream</a></li>
+			<li><a id="album" href="#">Album</a></li>
+			<li><a id="mapa" href="#">Mapa</a></li>
+			<li><a id="favoritos" href="#">Favoritos</a></li>
+			<li><a id="actividad-reciente" href="#">Actividad Reciente</a></li>
+		</ul>
+	</li>
+	<li class=" dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Personas <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a id="fotos-desde" href="#">Fotos desde</a></li>
+			<li><a id="fotos-de" href="#">Fotos de</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Explorar <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a id="fotos-recientes" href="#">Fotos Recientes</a></li>
+			<li><a id="mapa-mundial" href="#">Mapa Mundial</a></li>
+			<li><a id="buscador-camaras" href="#">Buscador de Cámaras</a></li>
+		</ul>
+	</li>
+	<li>
+		<a id="subir-imagen" href="subir-foto.html">Subir imagen</a>
+	</li>
+</ul>
