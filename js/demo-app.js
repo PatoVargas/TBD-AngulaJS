@@ -28,6 +28,28 @@
 	    $scope.page= Page; 
 	});
 
+    app.controller('loginCtrl', function($scope,loginService){
+        $scope.msgtxt='';
+        $scope.login=function(user){
+            loginService.login(user,$scope);
+        }
+        
+    });
+
+    app.factory('loginService',function($http){
+        return{
+            login:function(user,scope){
+                var $promise=$http.post('JSON/user.php',user);
+                $promise.then(function(msg){
+                    if(msg.data=='succes') scope.msgtxt='Bien';
+                    else scope.msgtxt='Error';
+
+                });
+            }
+        }
+
+    });
+
 	app.controller('HomeCtrl', function($scope, Page) {
 	    Page.setTitle("Bienvenido");
 	});
