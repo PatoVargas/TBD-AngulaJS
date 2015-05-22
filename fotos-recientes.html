@@ -1,8 +1,15 @@
-<div class="container-fluid">	
+<div class="container-fluid" ng-controller='popupCtrl'>	
+	<modal-dialog show='modalShown' 
+                    width='90' 
+                    height='90' 
+                    modal-user="user" 
+                    save-user="saveUser(user)"
+                    template-user="popup-fotos.html">
+    </modal-dialog>
 	<div class="row">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="img/foto12.jpg" alt=":)" class="img-thumbnail">
+				<img src="img/foto12.jpg" class="img-thumbnail" ng-click="toggleModal()">
 				<div class="caption">
 				<p>
 					<font color="blue"><strong>Untitled</strong></font>
@@ -12,98 +19,7 @@
 				</p>
 				</div>
 			</div>
-			<div class="thumbnail">
-				<img src="img/foto13.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>Untitled</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">12</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">3</font></span>
-					<font color="blue">Por ratonjuan</font>
-				</p>
-				</div>
-			</div>
-			<div class="thumbnail">
-				<img src="img/foto14.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>Untitled</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">1</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">2</font></span>
-					<font color="blue">Por ratonjuan</font>
-				</p>
-				</div>
-			</div>
-			<div class="thumbnail">
-				<img src="img/foto15.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>Untitled</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">11</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">2</font></span>
-					<font color="blue">Por ratonjuan</font>
-				</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="img/foto16.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>feliz</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">111</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">22</font></span>
-					<font color="blue">Por Raul</font>
-				</p>
-				</div>
-			</div>
-			<div class="thumbnail">
-				<img src="img/foto17.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>viva la vida!!!!</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">0</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">2</font></span>
-					<font color="blue">Por andre</font>
-				</p>
-				</div>
-			</div>
-			<div class="thumbnail">
-				<img src="img/foto18.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>!!!!</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">0</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">2</font></span>
-					<font color="blue">Por JP2009</font>
-				</p>
-				</div>
-			</div>					
-		</div>
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img src="img/foto19.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>Untitled</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">51</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">2</font></span>
-					<font color="blue">Por Raul</font>
-				</p>
-				</div>
-			</div>
-			<div class="thumbnail">
-				<img src="img/foto20.jpg" alt=":D!" class="img-thumbnail">
-				<div class="caption">
-				<p>
-					<font color="blue"><strong>pic!!!!</strong></font>	
-					<span class="glyphicon glyphicon-heart"><font color="blue">0</font></span>
-					<span class="glyphicon glyphicon-comment"><font color="blue">0</font></span>
-					<font color="blue">Por andre</font>
-				</p>
-				</div>
-			</div>				
 		</div>
 	</div>
+
 </div>
