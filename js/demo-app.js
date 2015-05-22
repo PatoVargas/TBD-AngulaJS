@@ -36,19 +36,40 @@
         
     });
 
-    app.factory('loginService',function($http){
+    app.factory('loginService',function($http, sessionService){
         return{
             login:function(user,scope){
                 var $promise=$http.post('JSON/user.php',user);
                 $promise.then(function(msg){
-                    if(msg.data=='succes') scope.msgtxt='Bien';
-                    else scope.msgtxt='Error';
+                    var uid=msg.data;
+                    if(uid=='succes'){ 
+                        scope.msgtxt='Bien';
+                        sessionService.set('user',uid);
+                        window.location.href="vistausuario.html"; 
+                    }   
+                    else{
+                        window.location.href="iniciarsesion.html"; 
+                    } 
 
                 });
             }
         }
 
     });
+
+    app.factory('sessionService', ['$http', function($http){
+        return{
+            set:function(key,value){
+                return sessionStorage.setItem(key,value);
+            },
+            get:function(){
+                return sessionStorage.getItem(key);
+            },
+            destroy:function(){
+                return sessionStorage.removeItem(key);
+            }
+        };
+    }]);
 
 	app.controller('HomeCtrl', function($scope, Page) {
 	    Page.setTitle("Bienvenido");
