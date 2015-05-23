@@ -92,6 +92,7 @@
           scope.save = function() {
             scope.saveUser(scope.modalUser);
             scope.show = false;
+            $http.post('JSON/nuevo.json', {id:2,texto:'este es un comentario',user:'pato'}); 
           };
           
           scope.cancel = function() {
@@ -163,13 +164,25 @@
 		});	
 	}]);
 
+    app.controller('FotosCtrl', [ '$http', function($http) {
+        var store = this;
+        store.fotos = [];
+        
+        $http.get('JSON/fotos.json').success(function(data){
+            store.fotos = data;
+        }); 
+    }]);
+
+
     app.controller('ComentariosCtrl', [ '$http', function($http) {
         var store = this;
         store.comentarios = [];
         
         $http.get('JSON/comentarios.json').success(function(data){
             store.comentarios = data;
-        }); 
+        });
+
+
     }]);
 
 	var app = angular.module('appServices', []);
