@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('demoapp', ['ngRoute', 'appServices']);
+	var app = angular.module('ui.bootstrap.demo', ['ngRoute', 'appServices', "ui.bootstrap"]);
 
     app.config(['$routeProvider', function($routeProvider) {
         $routeProvider.
@@ -28,6 +28,55 @@
 	    $scope.page= Page; 
 	});
 
+app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'popup-fotos.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+});
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
     app.controller('loginCtrl', function($scope,loginService){
         $scope.msgtxt='';
         $scope.login=function(user){
@@ -36,80 +85,6 @@
         
     });
 
-    app.config( [
-        '$compileProvider',
-        function( $compileProvider )
-        {   
-            $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
-            // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
-        }
-    ]);
-
-    app.directive('modalDialog', function($window, $templateCache, $compile, $http) {
-      return {
-        restrict: 'EA',
-        scope: {
-          show: '=',
-          modalUser: '=',
-          saveUser: '&',
-          templateUser: '@'
-        },
-        replace: true, // Replace with the template below
-        //transclude: true, // we want to insert custom content inside the directive
-        link: function(scope, element, attrs) {
-
-          $http.get(scope.templateUser, {cache: $templateCache}).success(function(tplContent){
-                    element.replaceWith($compile(tplContent)(scope));                
-                  });
-                  
-          scope.dialogStyle = {};
-          if (attrs.width) {
-            scope.dialogStyle.width = attrs.width + '%';
-            scope.dialogStyle.left = ( ( 100 - attrs.width ) / 2 ) + '%';
-          }
-          if (attrs.height) {
-            scope.dialogStyle.height = attrs.height + '%';
-            scope.dialogStyle.top = ( ( 100 - attrs.height ) / 2 ) + '%';
-          }
-            
-          scope.hideModal = function() {
-            scope.show = false;
-          };
-
-          scope.clone = function(obj) {
-            if (obj === null || typeof obj !== 'object') {
-                return obj;
-            }
-            var temp = obj.constructor(); // give temp the original obj's constructor
-            for (var key in obj) {
-                temp[key] = scope.clone(obj[key]);
-            }
-            return temp;
-          };
-
-          var tempUser = scope.clone(scope.modalUser);
-          
-          scope.save = function() {
-            scope.saveUser(scope.modalUser);
-            scope.show = false;
-            $http.post('JSON/nuevo.json', {id:2,texto:'este es un comentario',user:'pato'}); 
-          };
-          
-          scope.cancel = function() {
-            scope.modalUser = scope.clone(tempUser);
-            scope.show = false;
-          };
-        }
-      };
-    });
-
-    app.controller('popupCtrl', function($scope, $window) {
-      $scope.modalShown = false;
-      $scope.userMod = {};
-      $scope.toggleModal = function() {
-        $scope.modalShown = !$scope.modalShown;
-      }
-    });
 
     app.factory('loginService',function($http, sessionService){
         return{

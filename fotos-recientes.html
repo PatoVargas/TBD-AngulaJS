@@ -1,15 +1,8 @@
-<div class="container-fluid" ng-controller='popupCtrl'>	
-	<modal-dialog show='modalShown' 
-                    width='90' 
-                    height='90' 
-                    modal-user="user" 
-                    save-user="saveUser(user)"
-                    template-user="popup-fotos.html">
-    </modal-dialog>
+<div class="container-fluid" ng-controller='ModalDemoCtrl'>	
 	<div class="row" ng-controller="FotosCtrl as controlador">
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail" ng-repeat="fotos in controlador.fotos">
-				<img src="{{fotos.url}}" class="img-thumbnail" ng-click="toggleModal()">
+				<img src="{{fotos.url}}" class="img-thumbnail" ng-click="open('lg')">
 				<div class="caption">
 				<p>
 					<font color="blue"><strong>Untitled</strong></font>
